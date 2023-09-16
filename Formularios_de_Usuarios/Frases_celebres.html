@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frases celebres</title>
+</head>
+<body style="background-color: aliceblue;">
+    
+    <h1>Escribe una frase:</h1>
+    <form>
+        <input type="text" id="inputFrase" placeholder="Escribe tu frase aquí">
+        <button type="button" onclick="agregarFrase()">Guardar Frase</button>
+    </form>
+
+    <h2>Seleccione una frase:</h2>
+    <select id="selectFrase">
+        <option value="">Selecciona una frase</option>
+    </select>
+
+    <script>
+        function agregarFrase() {
+            // Obtener el valor del campo de entrada
+            var frase = document.getElementById("inputFrase").value.trim();
+
+            if (frase !== "") {
+                // Obtener el elemento select
+                var select = document.getElementById("selectFrase");
+
+                // Crear una nueva opción con la frase ingresada
+                var option = document.createElement("option");
+                option.text = frase;
+                option.value = frase;
+
+                // Agregar la opción al select
+                select.appendChild(option);
+
+                // Limpiar el campo de entrada
+                document.getElementById("inputFrase").value = "";
+            }
+        }
+    </script> 
+    
+    <button onclick="regresar()">enviar</button>
+
+    <script>
+        function regresar(){
+            window.location.href = "Formularios.html";
+        }
+    </script>
+
+
+    <button onclick="enviarCorreo()">Enviar Correo</button>
+
+    <script>
+        function enviarCorreo() {
+            // Dirección de correo electrónico del destinatario
+            var destinatario = "dannieguzmam@gmail.com"; // Reemplaza con la dirección deseada
+
+            // Asunto del correo (opcional)
+            var asunto = "Prueba"; // Puedes dejarlo en blanco si no deseas un asunto específico
+
+            // Cuerpo del correo (opcional)
+            var cuerpo = "Ayuda esto no es un meme"; // Puedes dejarlo en blanco si no deseas un cuerpo específico
+
+            // Generar el enlace de correo electrónico
+            var enlaceCorreo = "mailto:" + destinatario;
+            
+            // Agregar asunto y cuerpo si están definidos
+            if (asunto) {
+                enlaceCorreo += "?subject=" + encodeURIComponent(asunto);
+                if (cuerpo) {
+                    enlaceCorreo += "&body=" + encodeURIComponent(cuerpo);
+                }
+            }
+
+            // Redirigir al usuario al enlace de correo electrónico
+            window.location.href = enlaceCorreo;
+        }
+    </script>
+
+</body>
+</html>
